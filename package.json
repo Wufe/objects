@@ -6,13 +6,14 @@
   "scripts": {
     "compile": "npm-run-all pack:dev pack:prod",
     "compile:watch": "npm-run-all --parallel pack:dev:watch pack:prod:watch",
+    "cover": "NODE_ENV=test nyc npm t -s",
     "dev": "npm-run-all pack:dev:watch",
     "pack:dev": "webpack --config src/dev.webpack.js",
     "pack:dev:watch": "npm run -s pack:dev -- --watch",
     "pack:prod": "webpack --config src/prod.webpack.js",
     "pack:prod:watch": "npm run -s pack:prod -- --watch",
     "prepublish": "typings install",
-    "test": "istanbull mocha"
+    "test": "NODE_ENV=test mocha"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
     "npm-run-all": "^3.1.1",
+    "nyc": "^8.3.2",
     "should": "^11.1.1",
     "source-map-loader": "^0.1.5",
     "ts-loader": "^0.9.5",
@@ -40,5 +42,24 @@
     "typings": "^1.5.0",
     "webpack": "^1.13.3",
     "webpack-node-externals": "^1.5.4"
+  },
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "typings"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html"
+    ]
   }
 }

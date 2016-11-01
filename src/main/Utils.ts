@@ -1,7 +1,9 @@
 export default class Utils{
 
-	constructor(){
-		console.log( 'lol' );
+	constructor(){}
+
+	static test(): string{
+		return "lol";
 	}
 
 }
