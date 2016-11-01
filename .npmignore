@@ -1,0 +1,12 @@
+# Build artifacts
+build
+
+# Source code
+src
+
+# Test source code
+test
+
+# Type definitions files
+typings
+typings.json

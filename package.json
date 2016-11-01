@@ -5,12 +5,14 @@
   "main": "dist/lib/index.js",
   "scripts": {
     "compile": "npm-run-all pack:dev pack:prod",
+    "compile:watch": "npm-run-all --parallel pack:dev:watch pack:prod:watch",
     "dev": "npm-run-all pack:dev:watch",
     "pack:dev": "webpack --config src/dev.webpack.js",
     "pack:dev:watch": "npm run -s pack:dev -- --watch",
     "pack:prod": "webpack --config src/prod.webpack.js",
     "pack:prod:watch": "npm run -s pack:prod -- --watch",
-    "test": "mocha"
+    "prepublish": "typings install",
+    "test": "istanbull mocha"
   },
   "repository": {
     "type": "git",
@@ -27,10 +29,13 @@
   },
   "homepage": "https://github.com/Wufe/objects#readme",
   "devDependencies": {
+    "istanbul": "^0.4.5",
+    "mocha": "^3.1.2",
     "npm-run-all": "^3.1.1",
     "should": "^11.1.1",
     "source-map-loader": "^0.1.5",
     "ts-loader": "^0.9.5",
+    "ts-node": "^1.6.1",
     "typescript": "^2.0.6",
     "typings": "^1.5.0",
     "webpack": "^1.13.3",

@@ -39,3 +39,6 @@ typings
 
 # Yarn
 yarn.lock
+
+# Compilation artifacts
+build/lib
