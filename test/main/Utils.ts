@@ -60,4 +60,30 @@ describe( 'Utils', () => {
 			Should( ext ).have.propertyByPath( 'b', 'c', 'u' ).which.is.equal( false );
 		});
 	});
+	describe( 'getNestedValue', () => {
+		it( 'should get a 3 level deep nested value', () => {
+			let a: any = {
+				a: {
+					b: {
+						c: 't1'
+					}
+				}
+			};
+			let value: any = Utils.getNestedValue( a, 'a', 'b', 'c' );
+			Should( value ).equal( 't1' );
+		});
+	});
+	describe( 'setNestedValue', () => {
+		it( 'should set a 3 level deep nested value', () => {
+			let a: any = {
+				a: {
+					b: {
+						c: 't1'
+					}
+				}
+			};
+			let enhancedObject: any = Utils.setNestedValue( a, 't2', 'a', 'b', 'c' );
+			Should( enhancedObject ).have.propertyByPath( 'a', 'b', 'c' ).equal( 't2' );
+		});
+	});
 });
