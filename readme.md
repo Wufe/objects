@@ -1,21 +1,78 @@
 ## Objects
 
-Collection of utilities useful to manage *Node.js objects*.
+Collection of random utilities useful to manage *Node.js objects*.
 
-#### Development
+### How to use
 
-##### Requirements
+**getNestedValue**
 
-+ `node`
-+ `npm`
+`getNestedValue( object: any, ...keys: string[] )`
 
-##### Install
+```js
+const Objects = require( 'random-object-utils' );
 
-`npm install` or if you prefer `yarn`  
+let obj = {
+	a: {
+		b: {
+			c: {
+				d: 'd',
+				e: 'e'
+			}
+		}
+	}
+};
+console.log( Objects.getNestedValue( obj, 'a', 'b', 'c', 'e' ) );
+// prints 'e'
+```
 
-##### Commands
+**setNestedValue**
 
-+ `npm test` - runs tests  
-+ `npm cover` - runs tests and creates code coverage  
-+ `npm compile` - transpiles development and production builds  
-+ `npm dev` - transpiles dev build and watches for changes  
+`setNestedValue( object: any, value: any, ...keys: string[] )`
+
+```js
+const Objects = require( 'random-object-utils' );
+
+let obj = {
+	a: {
+		b: {
+			c: {
+				d: 'd',
+				e: 'e'
+			}
+		}
+	}
+};
+Objects.setNestedValue( obj, 'f', 'a', 'b', 'c', 'e' );
+console.log( Objects.getNestedValue( obj, 'a', 'b', 'c', 'e' ) );
+// prints 'f'
+```
+
+**deepExtend**
+
+`deepExtend( ...sources: any[] )`
+
+```js
+const Objects = require( 'random-object-utils' );
+
+let obj1 = {
+	a: {
+		b: {
+			c: {
+				d: 'd',
+				e: 'e'
+			}
+		}
+	}
+};
+let obj2 = {
+	a: {
+		b: false,
+		c: {
+			z: 'yes'
+		}
+	}
+};
+let res = Objects.deepExtend( obj1, obj2 );
+console.log( Objects.getNestedValue( obj, 'a', 'c', 'z' ) );
+// prints 'yes'
+```
