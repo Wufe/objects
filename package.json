@@ -1,6 +1,6 @@
 {
   "name": "@wufe/objects",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node.js library for managing objects.",
   "main": "dist/lib/objects.js",
   "scripts": {
