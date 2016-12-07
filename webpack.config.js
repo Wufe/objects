@@ -25,7 +25,7 @@ module.exports = {
             {
                 test: /\.tsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'ts-loader'
+                loader: 'babel-loader!ts-loader'
             },
             {
                 test: /\.json$/,
