@@ -2,7 +2,7 @@
   "name": "@wufe/objects",
   "version": "0.0.1",
   "description": "Node.js library for managing objects.",
-  "main": "dist/lib/index.js",
+  "main": "dist/lib/objects.js",
   "scripts": {
     "compile": "npm-run-all pack:dev pack:prod",
     "compile:watch": "npm-run-all --parallel pack:dev:watch pack:prod:watch",
