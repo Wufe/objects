@@ -5,11 +5,9 @@ import * as Mocha from 'mocha';
 import * as Objects from '../../src/index';
 import * as Should from 'should';
 
-const Utils = Objects.Utils;
-
-describe( 'Utils', () => {
-	it( 'should be a class', () => {
-		Should( typeof Utils ).be.exactly( "function" );
+describe( 'Objects', () => {
+	it( 'should be an object', () => {
+		Should( typeof Objects ).be.exactly( "object" );
 	});
 	describe( 'deepExtend', () => {
 		it( 'should extend an object given 6 sources', () => {
@@ -53,7 +51,7 @@ describe( 'Utils', () => {
 					}
 				}
 			};
-			let ext: any = Utils.deepExtend( a, b, c, d, e, f );
+			let ext: any = Objects.deepExtend( a, b, c, d, e, f );
 			Should( ext ).have.propertyByPath( 'b', 'c', 'z' ).which.is.equal( 'end' );
 			Should( ext ).have.propertyByPath( 'b', 'd' ).which.is.equal( 't1' );
 			Should( ext ).have.propertyByPath( 'b', 'e' ).which.is.equal( 't2' );
@@ -69,7 +67,7 @@ describe( 'Utils', () => {
 					}
 				}
 			};
-			let value: any = Utils.getNestedValue( a, 'a', 'b', 'c' );
+			let value: any = Objects.getNestedValue( a, 'a', 'b', 'c' );
 			Should( value ).equal( 't1' );
 		});
 	});
@@ -82,7 +80,7 @@ describe( 'Utils', () => {
 					}
 				}
 			};
-			let enhancedObject: any = Utils.setNestedValue( a, 't2', 'a', 'b', 'c' );
+			let enhancedObject: any = Objects.setNestedValue( a, 't2', 'a', 'b', 'c' );
 			Should( enhancedObject ).have.propertyByPath( 'a', 'b', 'c' ).equal( 't2' );
 		});
 	});
