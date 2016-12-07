@@ -1,5 +1,5 @@
 {
-  "name": "@wufe/objects",
+  "name": "random-object-utils",
   "version": "0.1.0",
   "description": "Node.js library for managing objects.",
   "main": "dist/lib/objects.js",
