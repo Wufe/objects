@@ -8,9 +8,9 @@
     "compile:watch": "npm-run-all --parallel pack:dev:watch pack:prod:watch",
     "cover": "NODE_ENV=test nyc npm t -s",
     "dev": "npm-run-all pack:dev:watch",
-    "pack:dev": "webpack --config src/dev.webpack.js",
+    "pack:dev": "webpack",
     "pack:dev:watch": "npm run -s pack:dev -- --watch",
-    "pack:prod": "webpack --config src/prod.webpack.js",
+    "pack:prod": "NODE_ENV=production webpack",
     "pack:prod:watch": "npm run -s pack:prod -- --watch",
     "prepublish": "typings install",
     "test": "NODE_ENV=test mocha"

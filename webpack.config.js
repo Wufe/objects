@@ -1,20 +1,22 @@
-var Webpack = require( 'webpack' );
-var Fs = require( 'fs' );
-var Path = require( 'path' );
-var externals = require( 'webpack-node-externals' );
+const Fs = require( 'fs' );
+const Path = require( 'path' );
+const Webpack = require( 'webpack' );
+const externals = require( 'webpack-node-externals' );
+
+const prod = process.env.NODE_ENV == 'production';
 
 module.exports = {
     context: __dirname,
-    devtool: "null",
+    devtool: prod ? "null" : "source-map",
     resolve: {
         extensions: [ "", ".webpack.js", ".ts", ".tsx", ".js" ]
     },
     entry: {
-        index: "./dist.ts"
+        index: "./src/index.ts"
     },
     output: {
-        path: 'dist/lib',
-        filename: "index.js",
+        path: prod ? "dist/lib" : "build/lib",
+        filename: "objects.js",
         libraryTarget: 'umd'
     },
     target: 'node',
@@ -31,7 +33,7 @@ module.exports = {
             }
         ]
     },
-    plugins: [
+    plugins: prod ? [
         new Webpack.optimize.DedupePlugin(),
         new Webpack.optimize.OccurenceOrderPlugin(),
         new Webpack.optimize.UglifyJsPlugin({
@@ -51,7 +53,7 @@ module.exports = {
                 'NODE_ENV': JSON.stringify( 'production' )
             }
         })
-    ],
+    ] : [],
     externals: [ externals() ],
     node:{
         __filename: true,
